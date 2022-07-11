@@ -18,22 +18,22 @@ import plotly.express as px
 
 
 def temp_model():
-    tempModel=load_model("D:\\User\\snamjoshi\\TemperatureForecastingModel")
+    tempModel=load_model("TemperatureForecastingModel")
     return tempModel
 def humidity_model():
-    humidityModel=load_model("D:\\User\\snamjoshi\\HumidityForecastingModel")
+    humidityModel=load_model("HumidityForecastingModel")
     return humidityModel
 def rainfall_model():
-    rainfallModel=load_model("D:\\User\\snamjoshi\\AvgRainfallForecastingModel")
+    rainfallModel=load_model("AvgRainfallForecastingModel")
     return rainfallModel
 def windspeed_model():
-    windspeedModel=load_model("D:\\User\\snamjoshi\\AvgWindspeedForecastingModel")
+    windspeedModel=load_model("AvgWindspeedForecastingModel")
     return windspeedModel
 def ur_model():
-    urModel=load_model("D:\\User\\snamjoshi\\URForecastingModel")
+    urModel=load_model("URForecastingModel")
     return urModel
 def demand_model():
-    demandModel=load_model("D:\\User\\snamjoshi\\DemandForecastingModel")
+    demandModel=load_model("DemandForecastingModel")
     return demandModel
     
 def app_layout():
