@@ -1,4 +1,4 @@
 pycaret==2.3.10
 streamlit
 numpy==1.19.5
-scipy==1.8.0
+scipy==1.8.1
