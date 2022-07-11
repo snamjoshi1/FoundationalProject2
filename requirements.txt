@@ -1,2 +1,4 @@
-pycaret==2.3.10
+pycaret
 streamlit
+pandas
+numpy
