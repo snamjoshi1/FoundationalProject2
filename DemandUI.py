@@ -44,7 +44,7 @@ def term():
     
 def app_layout(option):
     if option=='Short Term':
-        FutureMonths=st.number_input('Months',min_value=1,max_value=12,value=3)
+        FutureMonths=st.number_input('Months',min_value=1,max_value=12,value=4)
         return FutureMonths
     elif option=='Long Term':
         FutureMonths=st.number_input('Months',min_value=13,max_value=24,value=13)
