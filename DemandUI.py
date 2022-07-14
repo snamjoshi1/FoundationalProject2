@@ -38,7 +38,7 @@ def demand_model():
   
     
 def term():
-    st.title("Demand Forecasting")
+    st.title("Enerygy Consumption Forecasting")
     option = st.selectbox('Select Term for Forecast',('Short Term', 'Long Term'))
     return option
     
