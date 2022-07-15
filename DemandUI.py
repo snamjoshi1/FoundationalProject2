@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[3]:
-
 
 import streamlit as st
 from pycaret.regression import load_model,predict_model
@@ -13,8 +8,6 @@ from dateutil.relativedelta import relativedelta
 from functools import reduce
 import plotly.express as px
 
-
-# In[18]:
 
 
 def temp_model():
@@ -38,13 +31,13 @@ def demand_model():
   
     
 def term():
-    st.title("Energy Consumption Forecasting")
+    st.title("Demand Forecasting")
     option = st.selectbox('Select Term for Forecast',('Short Term', 'Long Term'))
     return option
     
 def app_layout(option):
     if option=='Short Term':
-        FutureMonths=st.number_input('Months',min_value=1,max_value=12,value=4)
+        FutureMonths=st.number_input('Months',min_value=1,max_value=12,value=3)
         return FutureMonths
     elif option=='Long Term':
         FutureMonths=st.number_input('Months',min_value=13,max_value=24,value=13)
@@ -74,10 +67,11 @@ def predict():
     model1=temp_model()
     temp_future = predict_model(model1, data=future_df)
     temp_future.columns=['Series','Month','Year','ForecastedTemperature']
+                     
     
     st.subheader("Temperature Forecasting")
     col1,col2=st.columns(2)
-    col1.dataframe(temp_future)
+    col1.dataframe(temp_future.style.format({'ForecastedTemperature':'{:.2f}'}))
     image=fig(temp_future,future_dates,'ForecastedTemperature')
     col2.plotly_chart(image)
     
@@ -86,7 +80,7 @@ def predict():
     model2=humidity_model()
     humidity_future = predict_model(model2, data=future_df)
     humidity_future.columns=['Series','Month','Year','ForecastedHumidity']
-    col1.dataframe(humidity_future)
+    col1.dataframe(humidity_future.style.format({'ForecastedHumidity':'{:.2f}'}))
     image=fig(humidity_future,future_dates,'ForecastedHumidity')
     col2.plotly_chart(image)
     
@@ -95,7 +89,7 @@ def predict():
     model3=rainfall_model()
     rainfall_future = predict_model(model3, data=future_df)
     rainfall_future.columns=['Series','Month','Year','ForecastedRainfall']
-    col1.dataframe(rainfall_future)
+    col1.dataframe(rainfall_future.style.format({'ForecastedRainfall':'{:.2f}'}))
     image=fig(rainfall_future,future_dates,'ForecastedRainfall')
     col2.plotly_chart(image)
     
@@ -104,7 +98,7 @@ def predict():
     model4=windspeed_model()
     windspeed_future = predict_model(model4, data=future_df)
     windspeed_future.columns=['Series','Month','Year','ForecastedWindSpeed']
-    col1.dataframe(windspeed_future)
+    col1.dataframe(windspeed_future.style.format({'ForecastedWindSpeed':'{:.2f}'}))
     image=fig(windspeed_future,future_dates,'ForecastedWindSpeed')
     col2.plotly_chart(image)
 
@@ -113,7 +107,7 @@ def predict():
     model5=ur_model()
     ur_future = predict_model(model5, data=future_df)
     ur_future.columns=['Series','Month','Year','ForecastedUnemploymentRate']
-    col1.dataframe(ur_future)
+    col1.dataframe(ur_future.style.format({'ForecastedUnemploymentRate':'{:.2f}'}))
     image=fig(ur_future,future_dates,'ForecastedUnemploymentRate')
     col2.plotly_chart(image)  
     
@@ -131,12 +125,10 @@ def predict():
     
     demand_future = predict_model(model6, data=predict_df)
     demand_future.columns=['Series','Month', 'Year','AvgTemp', 'AvgHumidity', 'AvgWindspeed', 'AvgRainfall','UnemploymentRate','ForecastedDemand']
-    col1.dataframe(demand_future)
+    col1.dataframe(demand_future.style.format({'AvgTemp':'{:.2f}','AvgHumidity':'{:.2f}','AvgWindspeed':'{:.2f}','UnemploymentRate':'{:.2f}','ForecastedDemand':'{:.2f}'}))
     image=fig(demand_future,future_dates,'ForecastedDemand')
     col2.plotly_chart(image)
 
-
-# In[ ]:
 
 
 predict()
