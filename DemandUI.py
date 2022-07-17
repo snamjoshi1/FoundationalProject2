@@ -31,7 +31,7 @@ def demand_model():
   
     
 def term():
-    st.title("Energy Consumption Forecasting")
+    st.title("Energy Consumption Prediction")
     option = st.selectbox('Select Term for Forecast',('Short Term', 'Long Term'))
     return option
     
@@ -111,7 +111,7 @@ def predict():
     image=fig(ur_future,future_dates,'ForecastedUnemploymentRate')
     col2.plotly_chart(image)  
     
-    st.subheader("Demand Forecasting")
+    st.subheader("Demand Prediction")
     col1,col2=st.columns(2)
     model6=demand_model()
     newDF1=[temp_future,humidity_future,windspeed_future,rainfall_future,ur_future]
