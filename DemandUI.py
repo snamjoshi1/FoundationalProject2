@@ -124,9 +124,9 @@ def predict():
     #['AvgTemp', 'AvgHumidity', 'AvgWindspeed', 'AvgRainfall','UnemploymentRate', 'Month', 'Year', 'Series']
     
     demand_future = predict_model(model6, data=predict_df)
-    demand_future.columns=['Series','Month', 'Year','AvgTemp', 'AvgHumidity', 'AvgWindspeed', 'AvgRainfall','UnemploymentRate','ForecastedDemand']
-    col1.dataframe(demand_future.style.format({'AvgTemp':'{:.2f}','AvgHumidity':'{:.2f}','AvgWindspeed':'{:.2f}','UnemploymentRate':'{:.2f}','ForecastedDemand':'{:.2f}'}))
-    image=fig(demand_future,future_dates,'ForecastedDemand')
+    demand_future.columns=['Series','Month', 'Year','AvgTemp', 'AvgHumidity', 'AvgWindspeed', 'AvgRainfall','UnemploymentRate','PredictedDemand']
+    col1.dataframe(demand_future.style.format({'AvgTemp':'{:.2f}','AvgHumidity':'{:.2f}','AvgWindspeed':'{:.2f}','UnemploymentRate':'{:.2f}','PredictedDemand':'{:.2f}'}))
+    image=fig(demand_future,future_dates,'PredictedDemand')
     col2.plotly_chart(image)
 
 
